@@ -1,4 +1,3 @@
-
 def peek_seq(arr):
     max_length = 0
     for i in range(len(arr)):
