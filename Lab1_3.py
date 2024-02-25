@@ -1,4 +1,3 @@
-import unittest
 
 def peek_seq(arr):
     max_length = 0
