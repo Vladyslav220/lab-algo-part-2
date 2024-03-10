@@ -4,24 +4,22 @@ class BinaryTree:
         self.left = left
         self.right = right
 
-def max_depth(node):
+
+def diam_and_depth(node):
     if not node:
-        return 0
-    else:
-        left_depth = max_depth(node.left)
-        right_depth = max_depth(node.right)
-        return max(left_depth, right_depth) + 1
+        return 0, 0
 
-def diameter_of_binary_tree(root):
-    if not root:
-        return 0
+    left_diameter, left_depth = diam_and_depth(node.left)
+    right_diameter, right_depth = diam_and_depth(node.right)
+    current_depth = max(left_depth, right_depth) + 1
+    current_diameter = max(left_depth + right_depth, left_diameter, right_diameter)
 
-    left_depth = max_depth(root.left)
-    right_depth = max_depth(root.right)
+    return current_diameter, current_depth
 
-    left_diameter = diameter_of_binary_tree(root.left)
-    right_diameter = diameter_of_binary_tree(root.right)
-    return max(left_depth + right_depth, max(left_diameter, right_diameter))
+
+def diameter_of_bin_tree(root):
+    diameter = diam_and_depth(root)[0]
+    return diameter
 
 root = BinaryTree(1)
 root.left = BinaryTree(3)
@@ -33,5 +31,4 @@ root.left.left.left.left = BinaryTree(9)
 root.left.right.right = BinaryTree(5)
 root.left.right.right.right = BinaryTree(6)
 
-print("Max tree diameter:", diameter_of_binary_tree(root))
-
+print("Max diameter:", diameter_of_bin_tree(root))
