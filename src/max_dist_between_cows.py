@@ -22,9 +22,3 @@ def agr_cows(N, C, free_sections):
             right = mid - 1
 
     return result
-
-N = 5
-C = 3
-free_sections = [1, 2, 8, 4, 9]
-
-print(agr_cows(N, C, free_sections))
