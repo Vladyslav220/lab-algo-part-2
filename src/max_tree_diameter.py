@@ -21,14 +21,3 @@ def diameter_of_bin_tree(root):
     diameter = diam_and_depth(root)[0]
     return diameter
 
-root = BinaryTree(1)
-root.left = BinaryTree(3)
-root.right = BinaryTree(2)
-root.left.left = BinaryTree(7)
-root.left.right = BinaryTree(4)
-root.left.left.left = BinaryTree(8)
-root.left.left.left.left = BinaryTree(9)
-root.left.right.right = BinaryTree(5)
-root.left.right.right.right = BinaryTree(6)
-
-print("Max diameter:", diameter_of_bin_tree(root))
