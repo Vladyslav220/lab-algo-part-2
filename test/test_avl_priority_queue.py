@@ -1,38 +1,33 @@
 import unittest
-from src.avl_priority_queue import Node, insert_into_queue, delete_from_queue, print_queue
+from src.avl_priority_queue import insert_into_queue, delete_from_queue
 
-class TestPriorityQueueMethods(unittest.TestCase):
+class TestPriorityQueue(unittest.TestCase):
+    def test_insertion(self):
+        root = None
+        root = insert_into_queue(root, 'root_node 1', 3)
+        root = insert_into_queue(root, 'root_node 2', 1)
+        root = insert_into_queue(root, 'root_node 3', 5)
+        self.assertEqual(root.value, 'root_node 1')
+        self.assertEqual(root.left.value, 'root_node 2')
+        self.assertEqual(root.right.value, 'root_node 3')
 
-    def test_insertion_and_deletion(self):
-        # Create an empty queue
-        root_node = None
+    def test_priority_duplicates(self):
+        root = None
+        root = insert_into_queue(root, 'root_node 1', 3)
+        root = insert_into_queue(root, 'root_node 2', 1)
+        root = insert_into_queue(root, 'root_node 3', 5)
+        root = insert_into_queue(root, 'root_node 4', 3)  # Duplicate priority
+        root = insert_into_queue(root, 'root_node 5', 3)  # Duplicate priority
+        self.assertEqual(root.value, 'root_node 1')  # Highest priority
+        self.assertEqual(root.right.value, 'root_node 3')
+        self.assertEqual(root.left.value, 'root_node 5')  # Among duplicates, inserted in order
+        self.assertEqual(root.left.left.value, 'root_node 2')  # Among duplicates, inserted in order
+        self.assertEqual(root.left.right.value, 'root_node 4')  # Among duplicates, inserted in order
 
-        # Insertion
-        root_node = insert_into_queue(root_node, 10, 6)
-        root_node = insert_into_queue(root_node, 20, 5)
-        root_node = insert_into_queue(root_node, 30, 3)
-        root_node = insert_into_queue(root_node, 40, 2)
-        root_node = insert_into_queue(root_node, 50, 1)
-        root_node = insert_into_queue(root_node, 25, 4)
-
-        root_node = delete_from_queue(root_node)
-
-    def test_printing(self):
-        # Create a sample tree
-        root_node = Node(10, 6)
-        root_node.left = Node(5, 5)
-        root_node.right = Node(20, 8)
-
-        import sys
-        from io import StringIO
-        captured_output = StringIO()
-        sys.stdout = captured_output
-
-        print_queue(root_node)
-
-        sys.stdout = sys.__stdout__
-
-        printed_output = captured_output.getvalue().strip()
+    def test_empty_tree(self):
+        root = None
+        root = delete_from_queue(root)
+        self.assertEqual(root, None)
 
 if __name__ == '__main__':
     unittest.main()

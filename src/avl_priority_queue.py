@@ -24,13 +24,6 @@ def update_height_and_balance(node):
     balance = get_balance(node)
     return node, balance
 
-
-def get_most_left_node(root_node):
-    if root_node is None or root_node.left is None:
-        return root_node
-    return get_most_left_node(root_node.left)
-
-
 def restore_balance(node, balance):
     if balance > 1:
         if get_balance(node.left) >= 0:
@@ -76,7 +69,7 @@ def delete_from_queue(root_node):
     root_node, balance = update_height_and_balance(root_node)
     if abs(balance) > 1:
         return restore_balance(root_node, balance)
-    return root_node
+    return find_node_with_highest_priority(root_node)
 
 
 def right_rotation(z_node):
