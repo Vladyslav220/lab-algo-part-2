@@ -7,20 +7,21 @@ cur_path = os.path.dirname(__file__)
 class TestMaxFlowForFlowerShop(unittest.TestCase):
 
     def test_max_flow(self):
-        result = max_flow('../resources/roads.csv')
+        input_file = os.path.join(cur_path, '..', 'resources', 'roads.csv')
+        result = max_flow(input_file)
         self.assertEqual(result, 20)
 
     def test_max_flow_multi_graph(self):
-        result = max_flow('../resources/roads_null.csv')
-
+        input_file = os.path.join(cur_path, '..', 'resources', 'roads_null.csv')
+        result = max_flow(input_file)
         self.assertEqual(result, 0)
 
     def test_max_flow_empty(self):
-        result = max_flow('../resources/roads_empty.csv')
-
+        input_file = os.path.join(cur_path, '..', 'resources', 'roads_empty.csv')
+        result = max_flow(input_file)
         self.assertEqual(result, 0)
 
     def test_max_flow_all_weight_1(self):
-        result = max_flow('../resources/roads_weight_1.csv')
-
+        input_file = os.path.join(cur_path, '..', 'resources', 'roads_weight_1.csv')
+        result = max_flow(input_file)
         self.assertEqual(result, 2)

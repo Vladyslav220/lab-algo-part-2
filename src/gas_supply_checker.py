@@ -1,3 +1,4 @@
+import os
 def dfs(graph, start, visited):
     stack = [start]
     while stack:
@@ -40,4 +41,6 @@ def write_unreachable_cities(output_file, unreachable_cities):
         for storage, unreachable in unreachable_cities:
             file.write(f"{storage} {unreachable}\n")
 
-find_unreachable_cities('../resources/input_gas.txt', '../resources/output_gas.txt')
+find_unreachable_cities('C:/Users/User/PycharmProjects/lab-algo-part-2/resources/input_gas.txt',
+                        'C:/Users/User/PycharmProjects/lab-algo-part-2/resources/output_gas.txt')
+
