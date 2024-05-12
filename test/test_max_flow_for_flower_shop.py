@@ -25,3 +25,6 @@ class TestMaxFlowForFlowerShop(unittest.TestCase):
         input_file = os.path.join(cur_path, '..', 'resources', 'roads_weight_1.csv')
         result = max_flow(input_file)
         self.assertEqual(result, 2)
+
+if __name__ == '__main__':
+    unittest.main()

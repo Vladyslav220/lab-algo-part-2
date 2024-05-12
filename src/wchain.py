@@ -14,6 +14,7 @@ def find_max_chain_length(words):
 
     return max(chain_lengths.values())
 
+
 def read_input(file_name):
     try:
         with open(file_name, 'r') as f:
@@ -29,6 +30,7 @@ def read_input(file_name):
         print(f"Input file '{file_name}' not found.")
         return []
 
+
 def write_output(max_chain_length, filename):
     try:
         with open(filename, 'w') as output_file:
@@ -36,6 +38,12 @@ def write_output(max_chain_length, filename):
     except Exception as e:
         print(f"Error writing to output file '{filename}': {e}")
 
-words = read_input('C:/Users/User/PycharmProjects/lab-algo-part-2/resources/wchain.in')
-max_chain_length = find_max_chain_length(words)
-write_output(max_chain_length, 'C:/Users/User/PycharmProjects/lab-algo-part-2/resources/wchain.out')
+
+if __name__ == "__main__":
+    input_file = '../resources/wchain.in'
+    output_file = '../resources/wchain.out'
+
+    words = read_input(input_file)
+    if words:
+        max_chain_length = find_max_chain_length(words)
+        write_output(max_chain_length, output_file)

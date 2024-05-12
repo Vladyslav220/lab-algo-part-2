@@ -22,3 +22,6 @@ class TestBFSShortMinesPath(unittest.TestCase):
             first_line = file.readline()
             numbers = first_line.split()
         self.assertEqual(int(numbers[0]), -1)
+
+if __name__ == '__main__':
+    unittest.main()
