@@ -40,4 +40,8 @@ def write_unreachable_cities(output_file, unreachable_cities):
         for storage, unreachable in unreachable_cities:
             file.write(f"{storage} {unreachable}\n")
 
-find_unreachable_cities('../resources/input_gas.txt', '../resources/output_gas.txt')
+
+if __name__ == "__main__":
+    input_file = '../resources/input_gas.txt'
+    output_file = '../resources/output_gas.txt'
+    find_unreachable_cities(input_file, output_file)
